@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZenFocus — Premium Pomodoro Timer</title>
+  <!-- Google Fonts: Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="background-decor">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <div class="app-container">
+    <header class="app-header">
+      <div class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="logo-icon">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+        <h1>ZenFocus</h1>
+      </div>
+      <p class="tagline">Work smart, rest well, stay mindful.</p>
+    </header>
+
+    <main class="timer-card">
+      <!-- Tabs for Session Modes -->
+      <nav class="timer-modes" id="modesNav">
+        <button class="mode-btn active" data-mode="work">Work</button>
+        <button class="mode-btn" data-mode="shortBreak">Short Break</button>
+        <button class="mode-btn" data-mode="longBreak">Long Break</button>
+      </nav>
+
+      <!-- Radial Progress & Timer Display -->
+      <div class="timer-display-container">
+        <svg class="progress-ring" width="300" height="300">
+          <circle class="progress-ring__circle-bg" stroke="rgba(255, 255, 255, 0.05)" stroke-width="8" fill="transparent" r="135" cx="150" cy="150" />
+          <circle class="progress-ring__circle" stroke="var(--accent-color)" stroke-width="8" fill="transparent" r="135" cx="150" cy="150" />
+        </svg>
+        <div class="time-text">
+          <span id="timerMinutes">25</span>:<span id="timerSeconds">00</span>
+        </div>
+        <span id="currentStatus" class="session-status">Time to focus</span>
+      </div>
+
+      <!-- Controls -->
+      <div class="timer-controls">
+        <button id="btnPlayPause" class="ctrl-btn main-ctrl" aria-label="Play or Pause">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon-play">
+            <polygon points="5 3 19 12 5 21 5 3"/>
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="icon-pause hidden">
+            <line x1="18" y1="4" x2="18" y2="20"/>
+            <line x1="6" y1="4" x2="6" y2="20"/>
+          </svg>
+        </button>
+        <button id="btnReset" class="ctrl-btn secondary-ctrl" aria-label="Reset Timer">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+          </svg>
+        </button>
+      </div>
+    </main>
+
+    <!-- Task Section -->
+    <section class="task-card">
+      <div class="task-header">
+        <h2>Tasks</h2>
+        <span id="taskCounter" class="badge">0 / 0</span>
+      </div>
+      
+      <div class="active-task-container">
+        <span class="active-task-label">Focusing on:</span>
+        <span id="activeTaskText" class="active-task-text">Select a task below</span>
+      </div>
+
+      <form id="taskForm" class="task-form">
+        <input type="text" id="taskInput" placeholder="What are you working on?" required autocomplete="off">
+        <button type="submit" class="add-task-btn" aria-label="Add Task">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+      </form>
+
+      <ul id="taskList" class="task-list">
+        <!-- Dynmically populated tasks -->
+      </ul>
+    </section>
+
+    <footer class="app-footer">
+      <p>ZenFocus Pomodoro Timer &copy; 2026. Made with Antigravity.</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
